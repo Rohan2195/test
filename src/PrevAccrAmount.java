@@ -6,10 +6,18 @@ public class PrevAccrAmount {
 
 	
 	public JSONObject getPreviousAccrualamount(Date paymentDate, Date dueDate,double amount){
-		
+		long noOfDays;
 		double x = calculateAccruedIncomePerDay(paymentDate,dueDate,amount);
-		long noOfDays =((TimeUnit.MINUTES.convert(new java.util.Date().getTime() - paymentDate.getTime(),TimeUnit.MILLISECONDS))/(60*24));
-       
+		long noOfDays1 =((TimeUnit.MINUTES.convert(dueDate.getTime() - new java.util.Date().getTime() ,TimeUnit.MILLISECONDS))/(60*24));
+		if(noOfDays1>0)
+		{
+		 noOfDays =((TimeUnit.MINUTES.convert(new java.util.Date().getTime() - paymentDate.getTime(),TimeUnit.MILLISECONDS))/(60*24));
+		}
+		else
+	        noOfDays =((TimeUnit.MINUTES.convert(dueDate.getTime() - paymentDate.getTime(),TimeUnit.MILLISECONDS))/(60*24));
+		
+			
+			
 		JSONObject obj = new JSONObject();
 		
 		String day="Day";
@@ -20,6 +28,7 @@ public class PrevAccrAmount {
 			value = x*i;
 			obj.put(key, Double.toString(value));	
 		}
+		
 	      return obj;
 	}
 	

@@ -36,10 +36,18 @@ public Connection getConnection() throws ClassNotFoundException, SQLException{
 			generateAccountEntryNo ACCNo = new generateAccountEntryNo();
 			String accENo =ACCNo.Generate(resultSet.getString("head"),resultSet.getString("branch"),resultSet.getString("Dr_Cr"), resultSet.getString("productSwiftId"));
 			ResultSet resultSet1 = statement.executeQuery("insert into general_ledger values('"+accENo+"',null,'"+resultSet.getString("tranction_date")+"','"+resultSet.getString("tranction_id")+"','"+resultSet.getString("Customer_acc_no")+"','"+resultSet.getString("invoice_No")+"','"+resultSet.getString("DR_CR")+"','"+resultSet.getDouble("Amount")+"','"+resultSet.getString("due_Date")+"','"+resultSet.getString("productSwiftId")+"',");
+			
 			if(resultSet.getString("Dr_Cr").equals("Dr")){
-			String accENo1 =ACCNo.Generate(resultSet.getString("head"),resultSet.getString("branch"),"Ar", resultSet.getString("productSwiftId"));
+				
+			String accENo1 = ACCNo.Generate(resultSet.getString("head"),resultSet.getString("branch"),"Ar", resultSet.getString("productSwiftId"));
+			
 			resultSet1 = statement.executeQuery("insert into general_ledger values('"+accENo1+"',null,null,null,'"+resultSet.getString("Customer_acc_no")+"','"+resultSet.getString("invoice_No")+"','CR',null,'"+resultSet.getString("due_Date")+"','"+resultSet.getString("productSwiftId")+"'");
-		    }
+			
+			accENo1 = ACCNo.Generate(resultSet.getString("head"),resultSet.getString("branch"),"Ir", resultSet.getString("productSwiftId"));
+			
+			resultSet1 = statement.executeQuery("insert into general_ledger values('"+accENo1+"',null,null,null,'"+resultSet.getString("Customer_acc_no")+"','"+resultSet.getString("invoice_No")+"','DR',null,'"+resultSet.getString("due_Date")+"','"+resultSet.getString("productSwiftId")+"'");
+			}
+			
 			con.close();
 		}
 		catch(Exception e) {
