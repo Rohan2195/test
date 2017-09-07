@@ -26,13 +26,24 @@ public class PrevAccrAmountApp {
 		    	  paymentDate = (Date) dateformat3.parse("11/05/2017"); 
 		        // System.out.println(t); 
 		    	  dueDate = (Date) dateformat3.parse("09/08/2017"); 
-		    	  System.out.print(input + " Parses awdawdawdawdas ");
-		    	  System.out.print(obj.getPreviousAccrualamount(paymentDate, dueDate, amount));
+		    	  System.out.println(input + " Parses awdawdawdawdas ");
+		    	  System.out.println(obj.getPreviousAccrualamount(paymentDate, dueDate, amount));
 		    	//  String json = out.toString(obj.getPreviousAccrualamount(paymentDate, dueDate, amount));		    	  
 		    	//  System.out.println(json);
 		      }
 		      catch (Exception e) { 
 		         System.out.println("Unparseable using " + e); 
 		      }
-	}
+	
+		      System.out.println(input + " Parses awdawdawdawdas ");
+	  int myInt = 1;
+	  String myStringRepOfInt = String.format("%03d", myInt);
+	  
+
+	  
+	  
+	  System.out.println("Using String.format: " + myStringRepOfInt);
+	 // DecimalFormat decimalFormat = new DecimalFormat("00000");
+	 // System.out.println("Using DecimalFormat: " + decimalFormat.format(myInt));
+}
 }

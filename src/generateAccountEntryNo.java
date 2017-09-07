@@ -29,17 +29,23 @@ public class generateAccountEntryNo {
 		generateAccountEntryNo No = new generateAccountEntryNo();
 		String AccountEntryNo ="";
 		
+		
+		
 		if(d_c_a.equals(dr)){
-			AccountEntryNo=head+branch+"01"+Long.toString(No.initdrNo());
+			String myStringRepOfInt = String.format("%03d", No.initdrNo());
+			AccountEntryNo=head+branch+"01"+myStringRepOfInt;
 		}
 		else if(d_c_a.equals(cr)){
-			AccountEntryNo=head+branch+"02"+Long.toString(No.initcrNo());
+			String myStringRepOfInt = String.format("%03d", No.initcrNo());
+			AccountEntryNo=head+branch+"02"+myStringRepOfInt;
 		}
 		else if(d_c_a.equals(ar)){
-			AccountEntryNo=head+branch+"03"+Long.toString(No.initacrNo());
+			String myStringRepOfInt = String.format("%03d", No.initacrNo());
+			AccountEntryNo=head+branch+"03"+myStringRepOfInt;
 		}
 		else if(d_c_a.equals(ir)){
-			AccountEntryNo=head+branch+"04"+Long.toString(No.initirNo());
+			String myStringRepOfInt = String.format("%03d", No.initacrNo());
+			AccountEntryNo=head+branch+"04"+myStringRepOfInt;
 		}
 		
 		return AccountEntryNo;
